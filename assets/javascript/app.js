@@ -51,8 +51,25 @@ startButton();
 $('#startButton').on('click', function () {
     $('#startButton').remove();
 
-    for(i = 0; i < 10; i++){
-        
+    let questionIndex = Math.floor(Math.random(triviaQuestions.questions.length) * triviaQuestions.questions.length);
+    let answerIndex = questionIndex;
+    // We create functions to generate random questions and answers
+    let triviaQuestion = function() {
+        randomQuestion = triviaQuestions.questions[questionIndex];
+        removeQuestion = triviaQuestions.questions.splice(questionIndex, 1);
+        console.log('Question #' + i + ' is: ' + randomQuestion);
+        return randomQuestion;
+    }
+
+    // This function returns the correct answer with the corresponding question
+    let triviaAnswer = function(){
+        correctAnswer = triviaQuestions.answers.correctAnswers[answerIndex];
+        return correctAnswer;
+    }
+
+    for (i = 0; i < 10; i++) {
+            $('#mainSection').append('<h2>' + triviaQuestion() + '</h2>');
+            $('#mainSection').append('<h2>' + triviaAnswer() + '</h2>');
     }
 });
 
