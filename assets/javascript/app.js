@@ -66,13 +66,13 @@ $('#startButton').on('click', function () {
         return correctAnswer;
     }
 
-    // This function returns the correct answer with the corresponding question
+    // This function returns the correct answer with the corresponding question and creates other random incorrect answers
 
 
     for (i = 0; i < 10; i++) {
         let qIndex = Math.floor(Math.random(triviaQuestions.questions.length) * triviaQuestions.questions.length);
         $('#mainSection').append('<h2>' + triviaQuestion(qIndex) + '</h2>');
-        $('#mainSection').append('<h2>' + triviaAnswer(qIndex) + '</h2>');
+        $('#mainSection').append('<input type="radio" name="question-'+ qIndex + '">'  + triviaAnswer(qIndex));
     }
 });
 
