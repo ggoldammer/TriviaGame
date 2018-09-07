@@ -51,6 +51,17 @@ startButton();
 $('#startButton').on('click', function () {
     $('#startButton').remove();
 
+    let resultDisplay = function () {
+        $('#mainSection').empty();
+        $('#mainSection').text('Game Over!');
+    }
+
+    let timerSet = setTimeout(resultDisplay, 10000);
+
+
+
+    $('#mainSection').append('<h2>Time Remaining: ' + timerSet + '</h2>');
+
     // We create functions to generate random questions and answers
     let triviaQuestion = function (qindex) {
         let randomQuestion = triviaQuestions.questions[qindex];
@@ -66,14 +77,17 @@ $('#startButton').on('click', function () {
         return correctAnswer;
     }
 
+
+
     // This function returns the correct answer with the corresponding question and creates other random incorrect answers
 
 
     for (i = 0; i < 10; i++) {
+
         let qIndex = Math.floor(Math.random(triviaQuestions.questions.length) * triviaQuestions.questions.length);
         $('#mainSection').append('<h2>' + triviaQuestion(qIndex) + '</h2>');
-        $('#mainSection').append('<input type="radio" name="question-'+ qIndex + '">'  + triviaAnswer(qIndex));
-        
+        $('#mainSection').append('<input type="radio" name="question-' + qIndex + '">' + triviaAnswer(qIndex));
+        $('#mainSection').append('<input type="radio" name="question-' + qIndex + '">' + )
     }
 });
 
