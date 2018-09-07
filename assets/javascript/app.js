@@ -73,6 +73,7 @@ $('#startButton').on('click', function () {
         let qIndex = Math.floor(Math.random(triviaQuestions.questions.length) * triviaQuestions.questions.length);
         $('#mainSection').append('<h2>' + triviaQuestion(qIndex) + '</h2>');
         $('#mainSection').append('<input type="radio" name="question-'+ qIndex + '">'  + triviaAnswer(qIndex));
+        
     }
 });
 
