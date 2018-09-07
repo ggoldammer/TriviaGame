@@ -1,16 +1,15 @@
 // 1. I need to declare all variables, including an object or array of questions and answers
 
-let timer = 90;
 let triviaQuestions = {
     questions:
         ["Who recruited the original Avengers?",
             "Who is the first Avenger?",
             "Who was the first deceased Avenger in the movie series?",
-            "Who was the first villain that the Avengers fought collectively?",
-            "How many Avengers were a part of the original team from the first movie?",
+            "Who is currently stuck in the Quantum Realm?",
+            "Which Avenger is a twin?",
             "Who's the only other Avenger that can lift Thor's hammer?",
             "Who did Thanos sacrifice for the Soul Stone?",
-            "Who was the villain that killed off half of the universe?",
+            "Who was the hero referrenced at the endcredit scene in Avengers: Infinity War?",
             "Who is the owner of the Time Stone?",
             "Who's the youngest Avenger?"],
     answers: {
@@ -19,22 +18,16 @@ let triviaQuestions = {
             ["Nick Fury",
                 "Captain America",
                 "Quick Silver",
-                "Loki",
-                "6",
+                "Ant Man",
+                "Scarlet Witch",
                 "Vision",
                 "Gamora",
-                "Thanos",
+                "Captain Marvel",
                 "Doctor Strange",
                 "Vision"],
         // Incorrect answers are below in array form
         incorrectHeroes: [
             "Winter Soldier", "Thor", "Black Widow", "Hawkeye", "Iron Man", "Hulk", "War Machine", "Groot", "Batman", "Superman", "Rocket Raccoon", "Spiderman", "Black Panther", "Wolverine",
-        ],
-        icorrectVillains: [
-            "Venom", "Ultron", "Hela", "Red Skull", "Ronan", "Abomination", "Ebony Maw", "Ego", "Erik Killmonger", "Grandmaster", "Aldrich Killian"
-        ],
-        incorrectNumbers: [
-            "5", "7", "8", "9", "11", "15", "17"
         ]
     }
 }
@@ -46,7 +39,7 @@ let startButton = function () {
 
 startButton();
 
-// 3. I need content to show up and replace the start button when start is pressed
+// 3. I need content to show up and replace the start button when start is pressed. I also need a timer at the start
 
 $('#startButton').on('click', function () {
     $('#startButton').remove();
@@ -56,7 +49,7 @@ $('#startButton').on('click', function () {
         $('#mainSection').text('Game Over!');
     }
 
-    let timerSet = setTimeout(resultDisplay, 10000);
+    let timerSet = setTimeout(resultDisplay, 60000);
 
 
 
@@ -77,6 +70,12 @@ $('#startButton').on('click', function () {
         return correctAnswer;
     }
 
+    let triviaWrongAnswers = function () {
+        let incorrectAnswer = triviaQuestions.answers.incorrectHeroes[Math.floor(Math.random(triviaQuestions.answers.incorrectHeroes.length) * triviaQuestions.answers.incorrectHeroes.length)];
+        console.log('Incorrect Answers: ' + incorrectAnswer);
+        return incorrectAnswer;
+    }
+
 
 
     // This function returns the correct answer with the corresponding question and creates other random incorrect answers
@@ -86,9 +85,10 @@ $('#startButton').on('click', function () {
 
         let qIndex = Math.floor(Math.random(triviaQuestions.questions.length) * triviaQuestions.questions.length);
         $('#mainSection').append('<h2>' + triviaQuestion(qIndex) + '</h2>');
-        $('#mainSection').append('<input type="radio" name="question-' + qIndex + '">' + triviaAnswer(qIndex));
-        $('#mainSection').append('<input type="radio" name="question-' + qIndex + '">' + )
+        $('#mainSection').append('<input type="radio" id="correct-' + i + '" name="question-' + i + '">' + triviaAnswer(qIndex));
+        $('#mainSection').append('<input type="radio" name="question-' + i + '">' + triviaWrongAnswers());
+        $('#mainSection').append('<input type="radio" name="question-' + i + '">' + triviaWrongAnswers());
+        $('#mainSection').append('<input type="radio" name="question-' + i + '">' + triviaWrongAnswers());
     }
 });
 
-// 4. I need a function that will generate a question and the answers that correspond with the question

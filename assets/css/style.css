@@ -1,0 +1,23 @@
+img {
+    max-width: 300px;
+    margin: auto;
+}
+
+h2 {
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+input {
+    margin: 0px 10px;
+}
+
+.jumbotron {
+    background: rgba(255,255,255, 0.9);
+    margin-top: 15px;
+}
+
+body {
+    background-image: url('../images/avengerbg.jpg');
+    background-size: cover;
+}
